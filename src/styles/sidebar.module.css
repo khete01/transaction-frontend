@@ -1,0 +1,36 @@
+.container {
+  width: 282px;
+  height: 1080px;
+  top: 96px;
+  left: 120px;
+  padding: 30px;
+  margin-top: 30px;
+  border-radius: 12px;
+  border: 1px;
+  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  font-family: Roboto;
+  font-weight: 400;
+}
+.addButton {
+  width: 280px;
+  height: 32px;
+  padding: 0px, 12px, 0px, 12px;
+  border-radius: 20px;
+  border: none;
+  gap: 4px;
+  background-color: #0166ff;
+  color: #f3f4f6;
+  font-family: Roboto;
+}
+.search {
+  background-color: #f3f4f6;
+  font-family: Roboto;
+  width: 250px;
+  height: 10px;
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px;
+}

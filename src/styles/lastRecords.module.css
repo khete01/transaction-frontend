@@ -1,0 +1,83 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+}
+.circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #0166ff;
+}
+.box {
+  align-items: center;
+  height: 80px;
+  padding: 20px, 10px, 20px, 10px;
+  border: 0px, 0px, 1px, 0px;
+  justify-content: space-between;
+  display: flex;
+  background-color: white;
+}
+.records {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: 40px;
+  gap: 16px;
+}
+.text {
+  width: 130px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  column-gap: 0px;
+  padding: 0;
+}
+.title {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+.date {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #6b7280;
+}
+.amount {
+  color: #84cc16;
+  width: 64px;
+  height: 24px;
+  gap: 8px;
+}
+.amountDiv {
+  display: flex;
+  justify-content: center;
+}
+.income {
+  color: #84cc16;
+}
+.expense {
+  color: red;
+}
+.iconBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 10px;
+  gap: 15px;
+}

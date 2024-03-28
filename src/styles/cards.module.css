@@ -1,0 +1,69 @@
+.card {
+  width: 380px;
+  height: 220px;
+  border-radius: 20px;
+  background-color: white;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #84cc16;
+  border-radius: 50px;
+}
+.box1 {
+  width: 380px;
+  height: 50px;
+  display: flex;
+  padding-left: 20px;
+  gap: 10px;
+  align-items: center;
+}
+.box2 {
+  width: 380px;
+  height: 150px;
+  display: flex;
+  align-items: left;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 20px;
+}
+.amount {
+  color: #64748b;
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 400;
+}
+
+.miniBox1 {
+  width: 186px;
+  height: 50px;
+  gap: 4px;
+}
+.amountNum {
+  font-family: Roboto;
+  font-size: 36px;
+  font-weight: 600;
+  line-height: 40px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding: 0px;
+  margin: 0;
+  font-family: Roboto;
+  font-weight: 600;
+}
+
+.iconBox {
+  display: flex;
+  gap: 5px;
+  height: 40px;
+  margin-top: 20px;
+}
+.percentage {
+  font-family: Roboto;
+  font-weight: 400;
+  margin: 0;
+}
+.title {
+  font-family: Roboto;
+  font-weight: 400;
+}

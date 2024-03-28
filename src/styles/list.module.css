@@ -1,0 +1,13 @@
+.container {
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+}
+.box {
+  width: 60vw;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+}

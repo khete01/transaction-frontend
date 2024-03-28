@@ -1,0 +1,17 @@
+.body {
+  background-color: whitesmoke;
+  height: 120vh;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 2vw;
+  background-color: whitesmoke;
+  padding-top: 2vw;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 50px;
+  margin-left: 50px;
+  margin-right: 50px;
+}

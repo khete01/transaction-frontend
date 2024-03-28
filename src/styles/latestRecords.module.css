@@ -1,0 +1,17 @@
+.container {
+  background-color: whitesmoke;
+  display: flex;
+  justify-content: center;
+  border-radius: 12px;
+  margin-left: 40px;
+}
+
+.box {
+  width: 60vw;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  font-family: Roboto;
+  font-weight: 600;
+}
