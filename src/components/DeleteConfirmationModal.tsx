@@ -9,8 +9,16 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import DeleteForever from "@mui/icons-material/DeleteForever";
 import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import axios from "axios";
+interface Transaction {
+  amount: number;
+}
 
-function DeleteConfirmationModal(transactions) {
+interface DeleteConfirmationModalProps {
+  transactions: Transaction;
+}
+function DeleteConfirmationModal({
+  transactions,
+}: DeleteConfirmationModalProps) {
   const [open, setOpen] = React.useState<boolean>(false);
 
   const handleDelete = async () => {

@@ -11,12 +11,13 @@ function List() {
     };
     fetchData();
   }, []);
+  const lastTenTransactions = transactions.slice(0, 5);
   console.log(transactions);
   return (
     <div className={style.container}>
       <div>
         <div className={style.box}>Last records</div>
-        {transactions.map((transactions, index) => (
+        {lastTenTransactions.map((transactions, index) => (
           <Records key={index} transactions={transactions} />
         ))}
       </div>

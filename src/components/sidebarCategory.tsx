@@ -1,6 +1,6 @@
 import React from "react";
 
-function Category(name) {
+function Category({ name }) {
   return (
     <div>
       <label htmlFor={name}>{name}</label>

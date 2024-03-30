@@ -9,6 +9,7 @@ import Stack from "@mui/joy/Stack";
 import Add from "@mui/icons-material/Add";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import axios from "axios";
+import ToggleButton from "@mui/material/ToggleButton";
 const styles = {
   button: {
     display: "flex",
@@ -17,8 +18,8 @@ const styles = {
     borderRadius: "20px",
     backgroundColor: "#0166FF",
     color: "white",
-    width: "100px",
-    height: "32px",
+    width: "150px",
+    height: "40px",
     border: "none",
   },
   type: {
@@ -109,7 +110,7 @@ export default function BasicModalDialog() {
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
           <div style={styles.type}>
-            <button
+            <ToggleButton
               style={Object.assign({}, styles.button, {
                 backgroundColor: type === "expense" ? "#0166FF" : "gray",
               })}
@@ -117,8 +118,8 @@ export default function BasicModalDialog() {
               className={type === "expense" ? "active" : ""}
             >
               Expense
-            </button>
-            <button
+            </ToggleButton>
+            <ToggleButton
               style={Object.assign({}, styles.button, {
                 backgroundColor: type === "income" ? "#16A34A" : "gray",
               })}
@@ -126,7 +127,7 @@ export default function BasicModalDialog() {
               className={type === "income" ? "active" : ""}
             >
               Income
-            </button>
+            </ToggleButton>
           </div>
           <form onSubmit={handleSubmit} style={styles.formContainer}>
             <div style={styles.formSection}>

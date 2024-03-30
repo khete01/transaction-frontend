@@ -4,7 +4,12 @@ import { HouseIcon } from "@/icons/houseIcon";
 // import { PenIcon } from "@/icons/penIcon";
 // import EditModalDialog from "./editModal";
 import React from "react";
-
+import EditModalDialog from "./editModal";
+import { useState } from "react";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 interface Transactions {
   createdAt: Date;
   category: string;
@@ -18,6 +23,7 @@ interface RecordsProps {
 }
 
 function Records({ transactions }: RecordsProps) {
+  const [data, setData] = useState();
   const createdAtDate = new Date(transactions.createdAt);
   const timeDifference = Date.now() - createdAtDate.getTime();
   let timeAgo: string;
@@ -33,6 +39,21 @@ function Records({ transactions }: RecordsProps) {
     timeAgo =
       remainingHours > 0 ? `${daysAgo} days ago` : `${daysAgo} days ago`;
   }
+  
+  
+
+  else {
+    const weeksAgo = Math.floor(timeDifference / 7 * 60 * 60 * 1000)
+    const remainingDays = Math.floor(timeDifference % (7 * 60 * 60 * 1000) / (1000 * 60 * 60))
+    timeAgo =
+      remainingHours > 0 ? `${weeksAgo} weeks ago` : `${weekssAgo} days ago`;
+  }
+
+
+
+  const handleEdit = () => {
+    setData;
+  };
 
   return (
     <div className={styles.container}>
@@ -59,8 +80,10 @@ function Records({ transactions }: RecordsProps) {
               </p>
               <div className={styles.iconBox}>
                 <DeleteConfirmationModal transactions={transactions} />
-
-                {/* <EditModalDialog /> */}
+                <EditModalDialog
+                  transactions={transactions}
+                  onSave={handleEdit}
+                />
               </div>
             </>
           ) : (
@@ -71,7 +94,10 @@ function Records({ transactions }: RecordsProps) {
               </p>
               <div className={styles.iconBox}>
                 <DeleteConfirmationModal transactions={transactions} />
-                {/* <EditModalDialog /> */}
+                <EditModalDialog
+                  transactions={transactions}
+                  onSave={handleEdit}
+                />
               </div>
             </>
           )}

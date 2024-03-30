@@ -13,6 +13,7 @@
   align-items: center;
   background-color: #0166ff;
 }
+
 .box {
   align-items: center;
   height: 80px;
@@ -70,9 +71,11 @@
 }
 .income {
   color: #84cc16;
+  font-family: Roboto;
 }
 .expense {
   color: red;
+  font-family: Roboto;
 }
 .iconBox {
   display: flex;

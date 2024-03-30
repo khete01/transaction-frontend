@@ -8,7 +8,7 @@ function RecordsPage() {
     <div className={style.container}>
       <Navbar />
       <div className={style.body}>
-        <Sidebar  />
+        <Sidebar />
         <LatestRecords />
       </div>
     </div>
