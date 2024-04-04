@@ -1,7 +1,8 @@
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const categories = ["Bills", "Food", "Shopping", "Insurance", "Clothing"];
@@ -31,6 +32,15 @@ const options = {
 };
 
 function Dashboard() {
+  const [transactions, setTransactions] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get("http://localhost:8080/get-income");
+      setTransactions(response.data);
+    };
+    fetchData();
+  }, []);
+
   return (
     <div
       style={{

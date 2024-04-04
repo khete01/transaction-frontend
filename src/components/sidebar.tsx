@@ -1,12 +1,9 @@
 import React from "react";
 import sidebarStyles from "@/styles/sidebar.module.css"; // Rename the imported styles
-
-import Checkbox from "./sidebarCheckbox";
 import Category from "./sidebarCategory";
 import BasicModalDialog from "./createRecords";
 
 function Sidebar() {
-  const types = ["All", "Income", "Expense"];
   const categories = [
     "Food & Drinks",
     "Shopping",
@@ -24,9 +21,6 @@ function Sidebar() {
       <input className={sidebarStyles.search} placeholder=" Search"></input>
       <div>
         <h3>Types</h3>
-        {types.map((type, index) => (
-          <Checkbox key={index} type={type} />
-        ))}
       </div>
       <div>
         <h3>Category</h3>

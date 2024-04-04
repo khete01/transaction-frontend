@@ -21,35 +21,27 @@ interface Transactions {
 interface RecordsProps {
   transactions: Transactions;
 }
-
 function Records({ transactions }: RecordsProps) {
   const [data, setData] = useState();
   const createdAtDate = new Date(transactions.createdAt);
   const timeDifference = Date.now() - createdAtDate.getTime();
   let timeAgo: string;
 
-  if (timeDifference < 24 * 60 * 60 * 1000) {
-    const hoursAgo = Math.floor(timeDifference / (1000 * 60 * 60));
-    timeAgo = hoursAgo > 1 ? `${hoursAgo} hours ago` : `${hoursAgo} hour ago`;
+  const daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
+  const weeksAgo = Math.floor(daysAgo / 7);
+  const monthsAgo = Math.floor(daysAgo / 30);
+  const yearsAgo = Math.floor(daysAgo / 365);
+
+  if (yearsAgo > 0) {
+    timeAgo = yearsAgo > 1 ? `${yearsAgo} years ago` : `${yearsAgo} year ago`;
+  } else if (monthsAgo > 0) {
+    timeAgo =
+      monthsAgo > 1 ? `${monthsAgo} months ago` : `${monthsAgo} month ago`;
+  } else if (weeksAgo > 0) {
+    timeAgo = weeksAgo > 1 ? `${weeksAgo} weeks ago` : `${weeksAgo} week ago`;
   } else {
-    const daysAgo = Math.floor(timeDifference / (24 * 60 * 60 * 1000));
-    const remainingHours = Math.floor(
-      (timeDifference % (24 * 60 * 60 * 1000)) / (1000 * 60 * 60)
-    );
-    timeAgo =
-      remainingHours > 0 ? `${daysAgo} days ago` : `${daysAgo} days ago`;
+    timeAgo = daysAgo > 1 ? `${daysAgo} days ago` : `${daysAgo} day ago`;
   }
-  
-  
-
-  else {
-    const weeksAgo = Math.floor(timeDifference / 7 * 60 * 60 * 1000)
-    const remainingDays = Math.floor(timeDifference % (7 * 60 * 60 * 1000) / (1000 * 60 * 60))
-    timeAgo =
-      remainingHours > 0 ? `${weeksAgo} weeks ago` : `${weekssAgo} days ago`;
-  }
-
-
 
   const handleEdit = () => {
     setData;
