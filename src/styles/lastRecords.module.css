@@ -13,7 +13,9 @@
   align-items: center;
   background-color: #0166ff;
 }
-
+.note {
+  font-family: roboto
+}
 .box {
   align-items: center;
   height: 80px;

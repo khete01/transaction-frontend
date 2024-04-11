@@ -5,8 +5,8 @@
   border-radius: 20px;
   background-color: #0166ff;
   color: white;
-  width: 100px;
-  height: 32px;
+  width: 150px;
+  height: 40px;
   border: none;
 }
 .type {
@@ -18,4 +18,13 @@
 }
 .formSection {
   flex: 1;
+  padding: 0 20px;
+}
+.formContainer {
+  display: flex;
+  gap: 20px;
+}
+.submit {
+  background-color: #0166ff;
+  border-radius: 20px;
 }

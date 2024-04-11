@@ -1,23 +1,30 @@
-.box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px;
-  height: 75px;
-  gap: 5px;
-  background-color: "background.paper";
-  border: 2px solid #000;
-  box-shadow: 24;
-  /* p: 4; */
-  display: flex;
-  flex-direction: column;
-}
 .button {
-  background-color: #303030;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #0166ff;
   color: white;
-  color: white;
-  border: 1px solid black;
-  border-radius: 32px;
-  width: 3vw;
+  width: 100px;
+  height: 32px;
+  border: none;
+}
+.type {
+  display: flex;
+}
+.note {
+  width: 250px;
+  height: 150px;
+}
+.formSection {
+  flex: 1;
+  padding: 0 20px;
+}
+.formSection {
+  display: flex;
+  gap: 20px;
+}
+.submit {
+  background-color: #0166ff;
+  border-radius: 20px;
 }

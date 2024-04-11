@@ -1,11 +1,8 @@
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import styles from "../styles/lastRecords.module.css";
 import { HouseIcon } from "@/icons/houseIcon";
-// import { PenIcon } from "@/icons/penIcon";
-// import EditModalDialog from "./editModal";
 import React from "react";
 import EditModalDialog from "./editModal";
-import { useState } from "react";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -16,13 +13,14 @@ interface Transactions {
   amount: number;
   transactionType: string;
   note: string;
+  _id: string;
 }
 
 interface RecordsProps {
   transactions: Transactions;
+  setTransactions: React.Dispatch<React.SetStateAction<Transactions[]>>;
 }
-function Records({ transactions }: RecordsProps) {
-  const [data, setData] = useState();
+function Records({ transactions, setTransactions }: RecordsProps) {
   const createdAtDate = new Date(transactions.createdAt);
   const timeDifference = Date.now() - createdAtDate.getTime();
   let timeAgo: string;
@@ -43,10 +41,6 @@ function Records({ transactions }: RecordsProps) {
     timeAgo = daysAgo > 1 ? `${daysAgo} days ago` : `${daysAgo} day ago`;
   }
 
-  const handleEdit = () => {
-    setData;
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.box}>
@@ -61,6 +55,7 @@ function Records({ transactions }: RecordsProps) {
             <p className={styles.date}>{timeAgo}</p>
           </div>
         </div>
+        <p className={styles.n}>{transactions.note}</p>
         <div className={styles.amountDiv}>
           {transactions.transactionType === "income" ? (
             <>
@@ -71,10 +66,13 @@ function Records({ transactions }: RecordsProps) {
                 {transactions.amount}
               </p>
               <div className={styles.iconBox}>
-                <DeleteConfirmationModal transactions={transactions} />
+                <DeleteConfirmationModal
+                  transactions={transactions}
+                  setTransactions={setTransactions}
+                />
                 <EditModalDialog
                   transactions={transactions}
-                  onSave={handleEdit}
+                  setTransactions={setTransactions}
                 />
               </div>
             </>
@@ -85,10 +83,13 @@ function Records({ transactions }: RecordsProps) {
                 {transactions.amount}
               </p>
               <div className={styles.iconBox}>
-                <DeleteConfirmationModal transactions={transactions} />
+                <DeleteConfirmationModal
+                  transactions={transactions}
+                  setTransactions={setTransactions}
+                />
                 <EditModalDialog
                   transactions={transactions}
-                  onSave={handleEdit}
+                  setTransactions={setTransactions}
                 />
               </div>
             </>

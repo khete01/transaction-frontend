@@ -1,16 +1,10 @@
 import React from "react";
-import sidebarStyles from "@/styles/sidebar.module.css"; // Rename the imported styles
+import sidebarStyles from "@/styles/sidebar.module.css";
 import Category from "./sidebarCategory";
 import BasicModalDialog from "./createRecords";
 
-function Sidebar() {
-  const categories = [
-    "Food & Drinks",
-    "Shopping",
-    "Housing",
-    "Transportation",
-    "Vehicle",
-  ];
+function Sidebar({}) {
+  const categories = ["Food", "Shopping", "Bills", "Clothing"];
 
   return (
     <div className={sidebarStyles.container}>
@@ -19,10 +13,7 @@ function Sidebar() {
         <BasicModalDialog />
       </div>
       <input className={sidebarStyles.search} placeholder=" Search"></input>
-      <div>
-        <h3>Types</h3>
-      </div>
-      <div>
+      <div className={sidebarStyles.categories}>
         <h3>Category</h3>
         {categories.map((category, index) => (
           <Category key={index} name={category} />

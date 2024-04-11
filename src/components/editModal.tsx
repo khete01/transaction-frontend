@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import * as React from "react";
 import Button from "@mui/joy/Button";
 import FormControl from "@mui/joy/FormControl";
@@ -10,6 +11,7 @@ import Add from "@mui/icons-material/Add";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import axios from "axios";
 import style from "../styles/edit.module.css";
+import { ToggleButton } from "@mui/material";
 const styles = {
   button: {
     display: "flex",
@@ -45,43 +47,54 @@ const styles = {
 
 const categories = ["Food", "Shopping", "Bills", "Clothing"];
 
-export default function EditModalDialog({ transactions, onSave }) {
+interface Transaction {
+  amount: number;
+  _id: string;
+  category: string;
+  note: string;
+}
+
+interface EditModalProps {
+  transactions: Transaction;
+  setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
+}
+
+export default function EditModalDialog({
+  transactions,
+  setTransactions,
+}: EditModalProps) {
   const [open, setOpen] = React.useState<boolean>(false);
-  const [amount, setAmount] = React.useState<string>(transactions.amount);
+  const [amount, setAmount] = React.useState<number>(transactions.amount);
   const [category, setCategory] = React.useState<string>(transactions.category);
   const [date, setDate] = React.useState<string>();
+  const [type, setType] = React.useState<string>("expense");
   const [note, setNote] = React.useState<string>(transactions.note);
   const [categoryModalOpen, setCategoryModalOpen] =
     React.useState<boolean>(false);
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const updatedTransactions = {
-      ...transactions,
-      category: category,
-      amount: amount,
-      createdAt: new Date(date),
-      note: note,
-    };
-
-    onSave(updatedTransactions);
     setOpen(false);
+  };
+  const newTransaction = {
+    userId: 1001,
+    category: category,
+    amount: amount,
+    createdAt: new Date(date),
+    note: note,
+    transactionType: type,
   };
 
   const editTransactions = async () => {
-    await axios.put(`http://localhost:8080/edit/${transactions._id}`, {
-      amount,
-      date,
-      category,
-    });
-    onSave({
-      ...transactions,
-      amount,
-      createdAt: new Date(date),
-      category,
-      note,
-    });
+    await axios.put(
+      `https://transaction-backend-houf.onrender.com/edit/${transactions._id}`,
+      newTransaction
+    );
+    setTransactions((prevTransactions) =>
+      prevTransactions.filter(
+        (transaction: { _id: string }) => transaction._id !== transactions._id
+      )
+    );
     setOpen(false);
   };
 
@@ -111,6 +124,26 @@ export default function EditModalDialog({ transactions, onSave }) {
       </Button>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
+          <div style={styles.type}>
+            <ToggleButton
+              style={Object.assign({}, styles.button, {
+                backgroundColor: type === "expense" ? "#0166FF" : "gray",
+              })}
+              onClick={() => setType("expense")}
+              className={type === "expense" ? "active" : ""}
+            >
+              Expense
+            </ToggleButton>
+            <ToggleButton
+              style={Object.assign({}, styles.button, {
+                backgroundColor: type === "income" ? "#16A34A" : "gray",
+              })}
+              onClick={() => setType("income")}
+              className={type === "income" ? "active" : ""}
+            >
+              Income
+            </ToggleButton>
+          </div>
           <form onSubmit={handleSubmit} style={styles.formContainer}>
             <div style={styles.formSection}>
               <Stack spacing={2}>

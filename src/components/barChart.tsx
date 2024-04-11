@@ -49,7 +49,7 @@ function BarChart() {
   const [transactions, setTransactions] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:8080/get-income");
+      const response = await axios.get("https://transaction-backend-houf.onrender.com/get-income");
       setTransactions(response.data);
     };
     fetchData();

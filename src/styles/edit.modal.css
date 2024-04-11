@@ -2,13 +2,29 @@
   display: flex;
 }
 .button {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border-radius:20px;
-    background-color:#0166FF;
-    color:white;
-    width:100px;
-    height:32px;
-    border:none;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #0166ff;
+  color: white;
+  width: 100px;
+  height: 32px;
+  border: none;
+}
+.note {
+  width: 250px;
+  height: 150px;
+}
+.formSection {
+  flex: 1;
+  padding: 0 20px;
+}
+.formContainer {
+  display: flex;
+  gap: 20px;
+}
+.submit {
+  background-color: #0166ff;
+  border-radius: 20px;
+}

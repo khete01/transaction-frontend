@@ -87,10 +87,9 @@ export default function BasicModalDialog() {
   const createTransaction = async (newTransaction: JSON) => {
     try {
       await axios.post(
-        "http://localhost:8080/create-transaction",
+        "https://transaction-backend-houf.onrender.com/create-transaction",
         newTransaction
       );
-
       console.log("success!");
     } catch (err) {
       console.error("Error:", err);

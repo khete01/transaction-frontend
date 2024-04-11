@@ -9,22 +9,34 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import DeleteForever from "@mui/icons-material/DeleteForever";
 import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import axios from "axios";
+
 interface Transaction {
   amount: number;
+  _id: string;
 }
 
 interface DeleteConfirmationModalProps {
   transactions: Transaction;
+   setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
 }
+
 function DeleteConfirmationModal({
   transactions,
+  setTransactions,
 }: DeleteConfirmationModalProps) {
   const [open, setOpen] = React.useState<boolean>(false);
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:8080/delete/${transactions._id}`);
+      await axios.delete(
+        `https://transaction-backend-houf.onrender.com/delete/${transactions._id}`
+      );
       console.log("Deleted!");
+      setTransactions((prevTransactions) =>
+        prevTransactions.filter(
+          (transaction: { _id: string }) => transaction._id !== transactions._id
+        )
+      );
     } catch (error) {
       console.error(error);
     }
@@ -33,13 +45,9 @@ function DeleteConfirmationModal({
 
   return (
     <>
-      <Button
-        variant="outlined"
-        color="black"
-        endDecorator={<DeleteForever />}
-        onClick={() => setOpen(true)}
-      ></Button>
-
+      <div onClick={() => setOpen(true)}>
+        <DeleteForever style={{ color: "black" }} />
+      </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog variant="outlined" role="alertdialog">
           <DialogTitle>
@@ -65,5 +73,4 @@ function DeleteConfirmationModal({
     </>
   );
 }
-
 export default DeleteConfirmationModal;
