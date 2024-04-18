@@ -1,11 +1,17 @@
 import React from "react";
+import style from "../styles/category.module.css";
+import { AngleRight } from "@/icons/angleRight";
+interface CategoryProps {
+  name: string;
+}
 
-function Category({ name }) {
+const Category: React.FC<CategoryProps> = ({ name }) => {
   return (
-    <div>
+    <div className={style.box}>
       <label htmlFor={name}>{name}</label>
+      <AngleRight />
     </div>
   );
-}
+};
 
 export default Category;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import Records from "./lastRecords";
 import styles from "../styles/latestRecords.module.css";
@@ -7,24 +7,28 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+interface Transaction {
+  transactionType: string;
+}
 
 function LatestRecords() {
-  const [transactions, setTransactions] = useState([]);
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [showIncome, setShowIncome] = useState(false);
   const [showExpense, setShowExpense] = useState(false);
   const [showAll, setShowAll] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      const userId = localStorage.getItem("user");
       const response = await axios.get(
-        "https://transaction-backend-houf.onrender.com/get-income"
+        `https://transaction-backend-houf.onrender.com/get-income/${userId}`
       );
       setTransactions(response.data);
     };
     fetchData();
   }, []);
 
-  const handleRadioChange = (event) => {
+  const handleRadioChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setShowIncome(value === "Income");
     setShowExpense(value === "Expense");
@@ -54,21 +58,23 @@ function LatestRecords() {
             onChange={handleRadioChange}
             name="radio-buttons-group"
           >
-            <FormControlLabel value="All" control={<Radio />} label="All" />
-            <FormControlLabel
-              value="Income"
-              control={<Radio />}
-              label="Income"
-            />
-            <FormControlLabel
-              value="Expense"
-              control={<Radio />}
-              label="Expense"
-            />
+            <div className={styles.FormControl}>
+              <FormControlLabel value="All" control={<Radio />} label="All" />
+              <FormControlLabel
+                value="Income"
+                control={<Radio />}
+                label="Income"
+              />
+              <FormControlLabel
+                value="Expense"
+                control={<Radio />}
+                label="Expense"
+              />
+            </div>
           </RadioGroup>
         </FormControl>
         <div>
-          <div className={styles.box}>Today</div>
+          <div className={styles.box}></div>
           {filterTransactions().map((transaction, index) => (
             <Records
               key={index}

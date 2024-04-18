@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import * as React from "react";
 import Button from "@mui/joy/Button";
 import FormControl from "@mui/joy/FormControl";
@@ -9,18 +10,16 @@ import Stack from "@mui/joy/Stack";
 import Add from "@mui/icons-material/Add";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import axios from "axios";
-import ToggleButton from "@mui/material/ToggleButton";
+import ColorToggleButton from "./typeButton";
+
 const styles = {
   button: {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: "20px",
     backgroundColor: "#0166FF",
     color: "white",
-    width: "150px",
-    height: "40px",
-    border: "none",
+    borderRadius: "20px",
   },
   type: {
     display: "flex",
@@ -45,6 +44,15 @@ const styles = {
 
 const categories = ["Food", "shopping", "bills", "clothing"];
 
+interface Transaction {
+  userId: string | null;
+  category: string;
+  amount: string;
+  createdAt: Date;
+  note: string;
+  transactionType: string;
+}
+
 export default function BasicModalDialog() {
   const [open, setOpen] = React.useState<boolean>(false);
   const [type, setType] = React.useState<string>("expense");
@@ -57,9 +65,9 @@ export default function BasicModalDialog() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const newTransaction = {
-      userId: 1001,
+    const userId = localStorage.getItem("user");
+    const newTransaction: Transaction = {
+      userId: userId,
       category: category,
       amount: amount,
       createdAt: new Date(date),
@@ -84,7 +92,7 @@ export default function BasicModalDialog() {
     closeCategoryModal();
   };
 
-  const createTransaction = async (newTransaction: JSON) => {
+  const createTransaction = async (newTransaction: Transaction) => {
     try {
       await axios.post(
         "https://transaction-backend-houf.onrender.com/create-transaction",
@@ -109,24 +117,7 @@ export default function BasicModalDialog() {
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
           <div style={styles.type}>
-            <ToggleButton
-              style={Object.assign({}, styles.button, {
-                backgroundColor: type === "expense" ? "#0166FF" : "gray",
-              })}
-              onClick={() => setType("expense")}
-              className={type === "expense" ? "active" : ""}
-            >
-              Expense
-            </ToggleButton>
-            <ToggleButton
-              style={Object.assign({}, styles.button, {
-                backgroundColor: type === "income" ? "#16A34A" : "gray",
-              })}
-              onClick={() => setType("income")}
-              className={type === "income" ? "active" : ""}
-            >
-              Income
-            </ToggleButton>
+            <ColorToggleButton setType={setType} type={type} />
           </div>
           <form onSubmit={handleSubmit} style={styles.formContainer}>
             <div style={styles.formSection}>

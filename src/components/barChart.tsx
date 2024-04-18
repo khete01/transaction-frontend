@@ -1,4 +1,5 @@
 import React from "react";
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,9 +9,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
-import axios from "axios";
-import { useEffect, useState } from "react";
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -20,42 +19,68 @@ ChartJS.register(
   Legend
 );
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
-const incomeAmount = {};
-const expenseAmount = {};
-const data = {
-  labels,
-  datasets: [
-    {
-      label: "Income",
-      data: labels.map(() => {
-        return incomeAmount * 3000000;
-      }),
-      backgroundColor: "#84CC16",
-      borderRadius: "30",
-    },
-    {
-      label: "Expense",
-      data: labels.map(() => {
-        return expenseAmount * 3000000;
-      }),
-      backgroundColor: "#F97316",
-      borderRadius: "30",
-    },
-  ],
-};
+interface Transactions {
+  createdAt: Date;
+  category: string;
+  amount: number;
+  transactionType: string;
+  note: string;
+  _id: string;
+}
+function BarChart({ transactions }: { transactions: Transactions[] }) {
+  const incomeAmount: { [label: string]: number } = {};
+  const expenseAmount: { [label: string]: number } = {};
 
-function BarChart() {
-  const [transactions, setTransactions] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get("https://transaction-backend-houf.onrender.com/get-income");
-      setTransactions(response.data);
-    };
-    fetchData();
-  }, []);
-  if (transactions.transactionType == "income") {
-  }
+  transactions.forEach((transaction) => {
+    const label = transaction.createdAt.toLocaleString("en-us", {
+      year: "numeric",
+      month: "long",
+    });
+
+    if (transaction.transactionType === "income") {
+      if (!incomeAmount[label]) {
+        incomeAmount[label] = 0;
+      }
+      incomeAmount[label] += transaction.amount;
+    } else if (transaction.transactionType === "expense") {
+      if (!expenseAmount[label]) {
+        expenseAmount[label] = 0;
+      }
+      expenseAmount[label] += transaction.amount;
+    }
+  });
+
+  const labels = Array.from(
+    new Set(
+      transactions.map((transaction) =>
+        transaction.createdAt.toLocaleString("en-us", {
+          year: "numeric",
+          month: "long",
+        })
+      )
+    )
+  );
+
+  const data = {
+    labels,
+    datasets: [
+      {
+        label: "Income",
+        data: labels.map((label) => incomeAmount[label] || 0),
+        backgroundColor: "#84CC16",
+        borderRadius: 20,
+        barThickness: 20,
+      },
+      {
+        label: "Expense",
+        data: labels.map((label) => expenseAmount[label] || 0),
+        backgroundColor: "#F97316",
+        borderRadius: 20,
+        barThickness: 20,
+      },
+    ],
+  };
+
   return (
     <div style={{ maxHeight: "400px", maxWidth: "800px" }}>
       <div
@@ -97,4 +122,5 @@ function BarChart() {
     </div>
   );
 }
+
 export default BarChart;

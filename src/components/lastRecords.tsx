@@ -1,12 +1,13 @@
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
 import styles from "../styles/lastRecords.module.css";
 import { HouseIcon } from "@/icons/houseIcon";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import EditModalDialog from "./editModal";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+
 interface Transactions {
   createdAt: Date;
   category: string;
@@ -18,7 +19,7 @@ interface Transactions {
 
 interface RecordsProps {
   transactions: Transactions;
-  setTransactions: React.Dispatch<React.SetStateAction<Transactions[]>>;
+  setTransactions: Dispatch<SetStateAction<Transactions[]>>;
 }
 function Records({ transactions, setTransactions }: RecordsProps) {
   const createdAtDate = new Date(transactions.createdAt);
@@ -55,7 +56,7 @@ function Records({ transactions, setTransactions }: RecordsProps) {
             <p className={styles.date}>{timeAgo}</p>
           </div>
         </div>
-        <p className={styles.n}>{transactions.note}</p>
+        <p className={styles.note}>{transactions.note}</p>
         <div className={styles.amountDiv}>
           {transactions.transactionType === "income" ? (
             <>

@@ -1,6 +1,6 @@
 .container {
   width: 282px;
-  height: 1080px;
+  height: 800px;
   top: 96px;
   left: 120px;
   padding: 30px;
@@ -35,7 +35,6 @@
   border: 1px;
 }
 .categories {
-  /* border:1px solid black; */
   display: flex;
   flex-direction: column;
   gap: 20px;

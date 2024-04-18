@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import { useState } from "react";
 import { GeldIcon } from "@/icons/geld";
 import { signUpStyles } from "./style";
@@ -70,7 +71,7 @@ function Sign() {
     } else {
       setLoading(true);
       axios
-        .post("https://income-tracker-service-fh1c.onrender.com/sign", {
+        .post("https://transaction-backend-houf.onrender.com/sign", {
           email: email,
           password: password,
           name: name,

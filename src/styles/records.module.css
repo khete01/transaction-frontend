@@ -1,10 +1,13 @@
 .body {
   background-color: whitesmoke;
   display: flex;
-  margin-left: 100px;
-  margin-right: 100px;
-  padding:20px;
+  padding: 40px;
+ height: 900px;
+ display: flex;
+ justify-content: center;
+
 }
-.container{
-    background-color: whitesmoke;
+.container {
+  background-color: whitesmoke;
+  max-height: 1000px;
 }

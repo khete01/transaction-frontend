@@ -1,0 +1,6 @@
+.box {
+    width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

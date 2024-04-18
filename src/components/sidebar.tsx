@@ -12,7 +12,6 @@ function Sidebar({}) {
         <h2>Records</h2>
         <BasicModalDialog />
       </div>
-      <input className={sidebarStyles.search} placeholder=" Search"></input>
       <div className={sidebarStyles.categories}>
         <h3>Category</h3>
         {categories.map((category, index) => (

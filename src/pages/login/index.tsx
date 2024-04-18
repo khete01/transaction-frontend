@@ -39,12 +39,13 @@ function Login() {
     } else {
       setLoading(true);
       axios
-        .post("https://income-tracker-service-fh1c.onrender.com/login", {
+        .post("https://transaction-backend-houf.onrender.com/login", {
           email: email,
           password: password,
         })
         .then((res) => {
           const user = res.data;
+          console.log(user);
           localStorage.setItem("user", user);
           setLoading(false);
           router.replace("/currency");
@@ -57,7 +58,7 @@ function Login() {
     }
   };
   const sign = () => {
-    router.replace("/");
+    router.replace("/sign");
   };
 
   return (

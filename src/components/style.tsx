@@ -21,9 +21,9 @@ export const CompStyles = {
     justifyContent: "space-between",
   },
   box1: {
-    width: "225px",
+    width: "300px",
     height: "40px",
-    gap: "24px",
+    gap: "20px",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -51,5 +51,16 @@ export const CompStyles = {
     weight: "600",
     size: "16px",
     lineHeight: "24px",
+    cursor: "pointer",
+  },
+  recordButton: {
+    cursor: "pointer",
+    weight: "600",
+    size: "16px",
+    lineHeight: "24px",
+  },
+  buttonsDiv: {
+    display: "flex",
+    gap: "40px",
   },
 };

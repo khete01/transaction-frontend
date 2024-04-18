@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import Button from "@mui/joy/Button";
 import Divider from "@mui/joy/Divider";
 import DialogTitle from "@mui/joy/DialogTitle";
@@ -10,14 +10,18 @@ import DeleteForever from "@mui/icons-material/DeleteForever";
 import WarningRoundedIcon from "@mui/icons-material/WarningRounded";
 import axios from "axios";
 
-interface Transaction {
+interface Transactions {
+  createdAt: Date;
+  category: string;
   amount: number;
+  transactionType: string;
+  note: string;
   _id: string;
 }
 
 interface DeleteConfirmationModalProps {
-  transactions: Transaction;
-   setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
+  transactions: Transactions;
+  setTransactions: Dispatch<SetStateAction<Transactions[]>>;
 }
 
 function DeleteConfirmationModal({
@@ -46,7 +50,7 @@ function DeleteConfirmationModal({
   return (
     <>
       <div onClick={() => setOpen(true)}>
-        <DeleteForever style={{ color: "black" }} />
+        <DeleteForever style={{ color: "black" , cursor: "pointer"}} />
       </div>
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog variant="outlined" role="alertdialog">

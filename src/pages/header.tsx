@@ -1,23 +1,19 @@
 import BlueCard from "@/components/blueCard";
 import Cards from "@/components/cards";
-import axios from "axios";
 import React, { useState, useEffect } from "react";
-function Header() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+
+interface Transaction {
+  transactionType: string;
+  amount: number;
+}
+
+interface HeaderProps {
+  transactions: Transaction[];
+}
+
+function Header({ transactions }: HeaderProps) {
   const [incomeAmount, setIncomeAmount] = useState<number>(0);
   const [expenseAmount, setExpenseAmount] = useState<number>(0);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/get-income");
-        setTransactions(response.data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, []);
 
   useEffect(() => {
     let totalIncome = 0;

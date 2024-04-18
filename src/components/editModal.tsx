@@ -11,18 +11,11 @@ import Add from "@mui/icons-material/Add";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import axios from "axios";
 import style from "../styles/edit.module.css";
-import { ToggleButton } from "@mui/material";
+import ColorToggleButton from "./typeButton";
+import { Dispatch, SetStateAction } from "react";
 const styles = {
   button: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: "20px",
     backgroundColor: "#0166FF",
-    color: "white",
-    width: "100px",
-    height: "32px",
-    border: "none",
   },
   type: {
     display: "flex",
@@ -47,16 +40,18 @@ const styles = {
 
 const categories = ["Food", "Shopping", "Bills", "Clothing"];
 
-interface Transaction {
-  amount: number;
-  _id: string;
+interface Transactions {
+  createdAt: Date;
   category: string;
+  amount: number;
+  transactionType: string;
   note: string;
+  _id: string;
 }
 
 interface EditModalProps {
-  transactions: Transaction;
-  setTransactions: React.Dispatch<React.SetStateAction<Transaction[]>>;
+  transactions: Transactions;
+  setTransactions: Dispatch<SetStateAction<Transactions[]>>;
 }
 
 export default function EditModalDialog({
@@ -80,21 +75,21 @@ export default function EditModalDialog({
     userId: 1001,
     category: category,
     amount: amount,
-    createdAt: new Date(date),
+    createdAt: date,
     note: note,
     transactionType: type,
   };
-
   const editTransactions = async () => {
     await axios.put(
       `https://transaction-backend-houf.onrender.com/edit/${transactions._id}`,
       newTransaction
     );
     setTransactions((prevTransactions) =>
-      prevTransactions.filter(
-        (transaction: { _id: string }) => transaction._id !== transactions._id
+      prevTransactions.map((transaction) =>
+        transaction._id === transactions._id ? newTransaction : transaction
       )
     );
+
     setOpen(false);
   };
 
@@ -125,24 +120,7 @@ export default function EditModalDialog({
       <Modal open={open} onClose={() => setOpen(false)}>
         <ModalDialog>
           <div style={styles.type}>
-            <ToggleButton
-              style={Object.assign({}, styles.button, {
-                backgroundColor: type === "expense" ? "#0166FF" : "gray",
-              })}
-              onClick={() => setType("expense")}
-              className={type === "expense" ? "active" : ""}
-            >
-              Expense
-            </ToggleButton>
-            <ToggleButton
-              style={Object.assign({}, styles.button, {
-                backgroundColor: type === "income" ? "#16A34A" : "gray",
-              })}
-              onClick={() => setType("income")}
-              className={type === "income" ? "active" : ""}
-            >
-              Income
-            </ToggleButton>
+            <ColorToggleButton setType={setType} type={type} />
           </div>
           <form onSubmit={handleSubmit} style={styles.formContainer}>
             <div style={styles.formSection}>
@@ -153,7 +131,7 @@ export default function EditModalDialog({
                     autoFocus
                     required
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(Number(e.target.value))}
                   />
                 </FormControl>
                 <FormControl>

@@ -15,12 +15,14 @@ function Navbar() {
       <div style={CompStyles.container}>
         <div style={CompStyles.box1}>
           <NavbarIcon />
+          <div style={CompStyles.buttonsDiv}>
           <button style={CompStyles.button} onClick={() => changeToDashboard()}>
-            <h3 style={CompStyles.dashboard}>Dashboard</h3>
+            <h2 style={CompStyles.dashboard}>Dashboard</h2>
           </button>
           <button style={CompStyles.button} onClick={() => changeToRecords()}>
-            <h2>Records</h2>
+            <h2 style={CompStyles.recordButton}>Records</h2>
           </button>
+        </div>
         </div>
         <div style={CompStyles.box2}>
           <BasicModalDialog />
