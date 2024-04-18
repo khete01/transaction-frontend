@@ -48,7 +48,6 @@ interface Transactions {
   transactionType: string;
   note: string;
   _id: string;
-  userId: number;
 }
 
 interface EditModalProps {
@@ -92,7 +91,6 @@ export default function EditModalDialog({
         `https://transaction-backend-houf.onrender.com/edit/${transactions._id}`,
         newTransaction
       );
-
       setTransactions((prevTransactions) => {
         const updatedTransactions = prevTransactions.map((transaction) =>
           transaction._id === transactions._id ? response.data : transaction
