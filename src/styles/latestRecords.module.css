@@ -4,24 +4,20 @@
   justify-content: center;
   border-radius: 12px;
   margin-left: 40px;
-  gap:50px
+  gap: 50px;
 }
 
-.box {
-  width: 60vw;
-  height: 56px;
-  display: flex;
-  align-items: center;
-  padding-left: 30px;
-  font-family: Roboto;
-  font-weight: 600;
-}
 .typeBox {
   display: flex;
   flex-direction: column;
 }
-.FormControl{
+.FormControl {
   width: 300px;
   display: flex;
   justify-content: space-between;
+}
+.scrollContainer {
+  width: 60vw;
+  height: 800px;
+  overflow-y: auto;
 }

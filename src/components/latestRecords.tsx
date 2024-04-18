@@ -1,18 +1,24 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import Records from "./lastRecords";
 import styles from "../styles/latestRecords.module.css";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
-interface Transaction {
+import Records from "./lastRecords";
+
+interface Transactions {
+  createdAt: Date;
+  category: string;
+  amount: number;
   transactionType: string;
+  note: string;
+  _id: string;
 }
 
 function LatestRecords() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [transactions, setTransactions] = useState<Transactions[]>([]);
   const [showIncome, setShowIncome] = useState(false);
   const [showExpense, setShowExpense] = useState(false);
   const [showAll, setShowAll] = useState(true);
@@ -74,14 +80,15 @@ function LatestRecords() {
           </RadioGroup>
         </FormControl>
         <div>
-          <div className={styles.box}></div>
-          {filterTransactions().map((transaction, index) => (
-            <Records
-              key={index}
-              transactions={transaction}
-              setTransactions={setTransactions}
-            />
-          ))}
+          <div className={styles.scrollContainer}>
+            {filterTransactions().map((transaction, index) => (
+              <Records
+                key={index}
+                transactions={transaction}
+                setTransactions={setTransactions}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

@@ -13,6 +13,7 @@ import axios from "axios";
 import style from "../styles/edit.module.css";
 import ColorToggleButton from "./typeButton";
 import { Dispatch, SetStateAction } from "react";
+
 const styles = {
   button: {
     backgroundColor: "#0166FF",
@@ -47,6 +48,7 @@ interface Transactions {
   transactionType: string;
   note: string;
   _id: string;
+  userId: number;
 }
 
 interface EditModalProps {
@@ -67,30 +69,39 @@ export default function EditModalDialog({
   const [categoryModalOpen, setCategoryModalOpen] =
     React.useState<boolean>(false);
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setOpen(false);
+    await editTransactions();
   };
+
+  const userId = localStorage.getItem("user");
+  console.log(userId);
   const newTransaction = {
-    userId: 1001,
+    userId: userId,
     category: category,
     amount: amount,
     createdAt: date,
     note: note,
     transactionType: type,
   };
-  const editTransactions = async () => {
-    await axios.put(
-      `https://transaction-backend-houf.onrender.com/edit/${transactions._id}`,
-      newTransaction
-    );
-    setTransactions((prevTransactions) =>
-      prevTransactions.map((transaction) =>
-        transaction._id === transactions._id ? newTransaction : transaction
-      )
-    );
 
-    setOpen(false);
+  const editTransactions = async () => {
+    try {
+      const response = await axios.put(
+        `https://transaction-backend-houf.onrender.com/edit/${transactions._id}`,
+        newTransaction
+      );
+
+      setTransactions((prevTransactions) => {
+        const updatedTransactions = prevTransactions.map((transaction) =>
+          transaction._id === transactions._id ? response.data : transaction
+        );
+        return updatedTransactions;
+      });
+    } catch (error) {
+      console.error("Error editing transaction:", error);
+    }
   };
 
   const openCategoryModal = () => {
@@ -151,11 +162,7 @@ export default function EditModalDialog({
                     onChange={(e) => setDate(e.target.value)}
                   />
                 </FormControl>
-                <Button
-                  type="submit"
-                  style={styles.submit}
-                  onClick={editTransactions}
-                >
+                <Button type="submit" style={styles.submit}>
                   Save Changes
                 </Button>
               </Stack>

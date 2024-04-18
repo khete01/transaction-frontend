@@ -43,12 +43,11 @@ export default function Home() {
   return (
     <div className={style.body}>
       <Navbar />
-        <div className={style.container}>
-          <Header transactions={transactions} />
-          <Chart transactions={transactions} />
-          <List transactions={transactions} setTransactions={setTransactions} />
-        </div>
-     
+      <div className={style.container}>
+        <Header transactions={transactions} />
+        <Chart transactions={transactions} />
+        <List transactions={transactions} setTransactions={setTransactions} />
+      </div>
     </div>
   );
 }
