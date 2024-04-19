@@ -1,4 +1,4 @@
-export const signUpStyles = {
+const signUpStyles = {
   container: {
     display: "flex",
     width: "100vw",
@@ -74,3 +74,4 @@ export const signUpStyles = {
     color: "red",
   },
 };
+export default signUpStyles

@@ -1,6 +1,6 @@
 import { GeldIcon } from "@/icons/geld";
 import Stepp from "../../components/stepper";
-import { balanceStyle } from "./style";
+import  balanceStyle  from "./style";
 import { VectorIcon } from "@/icons/vector";
 import router from "next/router";
 function Balance() {

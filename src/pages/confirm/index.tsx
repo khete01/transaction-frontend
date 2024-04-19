@@ -1,6 +1,6 @@
 import { GeldIcon } from "@/icons/geld";
 import Stepp from "../../components/stepper";
-import { ConfirmStyle } from "./style";
+import ConfirmStyle from "./style";
 import router from "next/router";
 import { SignIcon } from "@/icons/signIcon";
 function Confirmation() {

@@ -1,4 +1,4 @@
-export const currencyStyle = {
+const currencyStyle = {
   container: {
     width: "100vw",
     height: "100vh",
@@ -59,3 +59,4 @@ export const currencyStyle = {
     alignItems: "center",
   },
 };
+export default currencyStyle

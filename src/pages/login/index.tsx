@@ -1,5 +1,5 @@
 import { GeldIcon } from "@/icons/geld";
-import { signUpStyles } from "./styles";
+import signUpStyles from "./styles";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { ChangeEvent } from "react";

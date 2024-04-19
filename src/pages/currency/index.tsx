@@ -1,6 +1,6 @@
 import { GeldIcon } from "@/icons/geld";
 import Stepp from "../../components/stepper";
-import { currencyStyle } from "./style";
+import  currencyStyle  from "./style";
 import { MoneyIcon } from "@/icons/money";
 import router from "next/router";
 

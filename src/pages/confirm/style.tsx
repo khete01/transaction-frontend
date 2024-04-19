@@ -1,4 +1,4 @@
-export const ConfirmStyle = {
+const ConfirmStyle = {
   container: {
     width: "100vw",
     height: "100vh",
@@ -64,3 +64,4 @@ export const ConfirmStyle = {
     alignItems: "center",
   },
 };
+export default ConfirmStyle

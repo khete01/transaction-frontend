@@ -1,4 +1,4 @@
-export const balanceStyle = {
+const balanceStyle = {
   container: {
     width: "100vw",
     height: "100vh",
@@ -64,3 +64,4 @@ export const balanceStyle = {
     alignItems: "center",
   },
 };
+export default balanceStyle
