@@ -68,7 +68,7 @@ function Login() {
           <div className={styles.titleBox}>
             <GeldIcon />
           </div>
-          <div className={styles.titlediv} style={{flexDirection:"column"}}>
+          <div className={styles.titlediv} style={{ flexDirection: "column" }}>
             <h2>Welcome Back</h2>
             <p>Welcome back, Please enter your details</p>
           </div>
@@ -97,9 +97,21 @@ function Login() {
               Login
             </button>
           )}
-          <div className={styles.logInDiv}>
+          <div
+            className={styles.logInDiv}
+            style={{
+              display: "flex",
+              gap: "50px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
             <p>Don`t have account?</p>{" "}
-            <p className={styles.logButton} onClick={sign}>
+            <p
+              className={styles.logButton}
+              onClick={sign}
+              style={{ cursor: "pointer" }}
+            >
               Sign
             </p>
           </div>

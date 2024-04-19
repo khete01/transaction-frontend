@@ -1,4 +1,8 @@
 /* eslint-disable max-lines */
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import { useState } from "react";
 import { GeldIcon } from "@/icons/geld";
 import styles from "@/styles/signStyles.module.css";
@@ -97,39 +101,54 @@ function Sign() {
           <div className={styles.titleBox}>
             <GeldIcon />
           </div>
-          <div className={styles.textBox} style={{justifyContent:'center', alignItems:"center"}}>
-            <h2>Create Geld account</h2>
-            <p>Sign up below to create your Wallet account</p>
+          <div
+            className={styles.textBox}
+            style={{ justifyContent: "center", alignItems: "center" }}
+          >
+            <h2 style={{ fontFamily: "roboto" }}>Create Geld account</h2>
+            <p style={{ fontFamily: "roboto" }}>
+              Sign up below to create your Wallet account
+            </p>
           </div>
-          <div className={styles.inpDiv} style={{flexDirection:"column"}}>
+          <div className={styles.inpDiv} style={{ flexDirection: "column" }}>
             <input
               placeholder=" Name"
               className={styles.inp}
               onChange={handleChangename}
             />
-            <div className={styles.required}>{nameError}</div>
+            <div className={styles.required} style={{ color: "red" }}>
+              {nameError}
+            </div>
             <input
               placeholder=" Email"
               className={styles.inp}
               onChange={handleChangeEmail}
             />
-            <div className={styles.required}>{emailError}</div>
+            <div className={styles.required} style={{ color: "red" }}>
+              {emailError}
+            </div>
             <input
               placeholder=" Password"
               className={styles.inp}
               onChange={handleChangePassword}
               type="password"
             />
-            <div className={styles.required}>{passwordError}</div>
+            <div className={styles.required} style={{ color: "red" }}>
+              {passwordError}
+            </div>
             <input
               placeholder=" Re-Password"
               className={styles.inp}
               onChange={handleChangeConfirmPassword}
               type="password"
             />
-            <div className={styles.required}>{confirmPasswordError}</div>
-            <div className={styles.required}>
-              <p className={styles.required} style={{color:"red"}}>{required}</p>
+            <div className={styles.required} style={{ color: "red" }}>
+              {confirmPasswordError}
+            </div>
+            <div className={styles.required} style={{ color: "red" }}>
+              <p className={styles.required} style={{ color: "red" }}>
+                {required}
+              </p>
             </div>
             {loading ? (
               <TailSpin color="black" radius={"10px"} />
@@ -140,7 +159,11 @@ function Sign() {
             )}
             <div className={styles.logInDiv}>
               <p>Already have account?</p>{" "}
-              <p className={styles.logButton} onClick={login}>
+              <p
+                className={styles.logButton}
+                onClick={login}
+                style={{ cursor: "pointer" }}
+              >
                 Log in
               </p>
             </div>
