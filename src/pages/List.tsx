@@ -1,3 +1,4 @@
+"use client"
 import Records from "@/components/lastRecords";
 import style from "../styles/list.module.css";
 import React, { Dispatch, SetStateAction } from "react";

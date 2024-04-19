@@ -1,6 +1,6 @@
 import { GeldIcon } from "@/icons/geld";
 import Stepp from "../../components/stepper";
-import  currencyStyle  from "./style";
+import currencyStyle from "@/styles/currency.module.css";
 import { MoneyIcon } from "@/icons/money";
 import router from "next/router";
 
@@ -29,25 +29,25 @@ function Currency() {
   ];
 
   return (
-    <div style={{ ...currencyStyle.container, flexDirection: "column" }}>
-      <div style={{ ...currencyStyle.iconBox, flexDirection: "column" }}>
+    <div className={currencyStyle.container}>
+      <div className={currencyStyle.iconBox}>
         <GeldIcon />
         <Stepp />
       </div>
 
-      <div style={currencyStyle.box}>
-        <div style={{ ...currencyStyle.label, flexDirection: "column" }}>
-          <div style={currencyStyle.moneyBackground}>
+      <div className={currencyStyle.box}>
+        <div className={currencyStyle.label}>
+          <div className={currencyStyle.moneyBackground}>
             <MoneyIcon />
           </div>
           <label>
-            <div style={currencyStyle.title}>
+            <div className={currencyStyle.title}>
               <h2>Select base currency</h2>
             </div>
             <select
               name="selectedFruit"
               defaultValue="MNT - Mongolian Tugrik"
-              style={currencyStyle.select}
+              className={currencyStyle.select}
             >
               {currencyOptions.map((option, index) => (
                 <option key={index} value={option}>
@@ -58,7 +58,7 @@ function Currency() {
           </label>
           <p
             style={{
-              ...currencyStyle.alt,
+              color: "#475569",
               fontSize: "12px",
               fontWeight: "400",
               lineHeight: "16px",
@@ -70,7 +70,7 @@ function Currency() {
             transactions in other currencies will be calculated based on this
             one
           </p>
-          <button style={currencyStyle.confirm} onClick={confirm}>
+          <button className={currencyStyle.confirm} onClick={confirm}>
             Confirm
           </button>
         </div>

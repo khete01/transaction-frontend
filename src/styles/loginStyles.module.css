@@ -1,0 +1,74 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+.win1 {
+  height: 100vh;
+  width: 50vw;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.titlediv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.win2 {
+  height: 100vh;
+  width: 50vw;
+  background-color: #0166ff;
+}
+.box {
+  gap: 20px;
+  width: 380px;
+  height: 550px;
+  display: flex;
+  flex-direction: column;
+}
+.titleBox {
+  display: flex;
+  justify-content: center;
+}
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+.inp {
+  width: 380px;
+  height: 50px;
+  background-color: #f3f4f6;
+  border-radius: 5px;
+  border: 1px solid #d1d5db;
+  color: black;
+}
+.inpDiv {
+  display: flex;
+  gap: 16px;
+}
+.button {
+  width: 380px;
+  height: 48px;
+  background-color: #0166ff;
+  border-radius: 20px;
+  color: white;
+  border: none;
+}
+.logindiv {
+  width: 380px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.logButton {
+  color: blue;
+}
+.required {
+  color: red;
+}

@@ -1,6 +1,6 @@
 import { GeldIcon } from "@/icons/geld";
 import Stepp from "../../components/stepper";
-import ConfirmStyle from "./style";
+import styles from "../../styles/confirm.module.css"
 import router from "next/router";
 import { SignIcon } from "@/icons/signIcon";
 function Confirmation() {
@@ -8,26 +8,25 @@ function Confirmation() {
     router.replace("/");
   };
   return (
-    <div style={{ ...ConfirmStyle.container, flexDirection: "column" }}>
-      <div style={{ ...ConfirmStyle.iconBox, flexDirection: "column" }}>
+    <div className={styles.container}>
+      <div className={styles.iconBox}>
         <GeldIcon />
         <Stepp />
       </div>
-      <div style={ConfirmStyle.box}>
-        <div style={{ ...ConfirmStyle.label, flexDirection: "column" }}>
-          <div style={ConfirmStyle.picDiv}>
-            <div style={ConfirmStyle.circle}>
+      <div className={styles.box}>
+        <div className={styles.label}>
+          <div className={styles.picDiv}>
+            <div className={styles.circle}>
               <SignIcon />
             </div>
           </div>
 
-          <div style={ConfirmStyle.title}>
+          <div className={styles.title}>
             <h2>Good job!</h2>
           </div>
 
           <p
             style={{
-              ...ConfirmStyle.alt,
               fontSize: "16px",
               fontWeight: "400",
               lineHeight: "24px",
@@ -38,7 +37,7 @@ function Confirmation() {
             Your very first account has been created. Now continue to dashboard
             and start tracking
           </p>
-          <button style={ConfirmStyle.confirm} onClick={confirm}>
+          <button className={styles.confirm} onClick={confirm}>
             Go to Dashboard
           </button>
         </div>

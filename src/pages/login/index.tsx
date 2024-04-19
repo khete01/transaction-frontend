@@ -1,5 +1,5 @@
 import { GeldIcon } from "@/icons/geld";
-import signUpStyles from "./styles";
+import styles from "@/styles/loginStyles.module.css";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { ChangeEvent } from "react";
@@ -62,50 +62,50 @@ function Login() {
   };
 
   return (
-    <div style={signUpStyles.container}>
-      <div style={signUpStyles.win1}>
-        <div style={{ ...signUpStyles.box, flexDirection: "column" }}>
-          <div style={signUpStyles.titleBox}>
+    <div className={styles.container}>
+      <div className={styles.win1}>
+        <div className={styles.box}>
+          <div className={styles.titleBox}>
             <GeldIcon />
           </div>
-          <div style={{ ...signUpStyles.titlediv, flexDirection: "column" }}>
+          <div className={styles.titlediv} style={{flexDirection:"column"}}>
             <h2>Welcome Back</h2>
             <p>Welcome back, Please enter your details</p>
           </div>
           <input
             placeholder=" Email"
-            style={signUpStyles.inp}
+            className={styles.inp}
             onChange={handleChangeEmail}
           />
-          <div style={signUpStyles.required}>{emailError}</div>
+          <div className={styles.required}>{emailError}</div>
 
           <input
             placeholder=" Password"
-            style={signUpStyles.inp}
+            className={styles.inp}
             onChange={handleChangePassword}
             type="password"
           />
-          <div style={signUpStyles.required}>{passwordError}</div>
+          <div className={styles.required}>{passwordError}</div>
 
-          <div style={signUpStyles.required}>
-            <p style={signUpStyles.required}>{required}</p>
+          <div className={styles.required}>
+            <p className={styles.required}>{required}</p>
           </div>
           {loading ? (
             <TailSpin color="black" radius={"10px"} />
           ) : (
-            <button style={signUpStyles.button} onClick={handleLogin}>
+            <button className={styles.button} onClick={handleLogin}>
               Login
             </button>
           )}
-          <div style={signUpStyles.logInDiv}>
+          <div className={styles.logInDiv}>
             <p>Don`t have account?</p>{" "}
-            <p style={signUpStyles.logButton} onClick={sign}>
+            <p className={styles.logButton} onClick={sign}>
               Sign
             </p>
           </div>
         </div>
       </div>
-      <div style={signUpStyles.win2}></div>
+      <div className={styles.win2}></div>
     </div>
   );
 }

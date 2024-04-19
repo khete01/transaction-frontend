@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 import { useState } from "react";
 import { GeldIcon } from "@/icons/geld";
-import { signUpStyles } from "./style";
+import styles from "@/styles/signStyles.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { ChangeEvent } from "react";
@@ -91,63 +91,63 @@ function Sign() {
     router.replace("/login");
   };
   return (
-    <div style={signUpStyles.container}>
-      <div style={signUpStyles.win1}>
-        <div style={{ ...signUpStyles.box, flexDirection: "column" }}>
-          <div style={signUpStyles.titleBox}>
+    <div className={styles.container}>
+      <div className={styles.win1}>
+        <div className={styles.box}>
+          <div className={styles.titleBox}>
             <GeldIcon />
           </div>
-          <div style={{ ...signUpStyles.textBox, flexDirection: "column" }}>
+          <div className={styles.textBox} style={{justifyContent:'center', alignItems:"center"}}>
             <h2>Create Geld account</h2>
             <p>Sign up below to create your Wallet account</p>
           </div>
-          <div style={{ ...signUpStyles.inpDiv, flexDirection: "column" }}>
+          <div className={styles.inpDiv} style={{flexDirection:"column"}}>
             <input
               placeholder=" Name"
-              style={signUpStyles.inp}
+              className={styles.inp}
               onChange={handleChangename}
             />
-            <div style={signUpStyles.required}>{nameError}</div>
+            <div className={styles.required}>{nameError}</div>
             <input
               placeholder=" Email"
-              style={signUpStyles.inp}
+              className={styles.inp}
               onChange={handleChangeEmail}
             />
-            <div style={signUpStyles.required}>{emailError}</div>
+            <div className={styles.required}>{emailError}</div>
             <input
               placeholder=" Password"
-              style={signUpStyles.inp}
+              className={styles.inp}
               onChange={handleChangePassword}
               type="password"
             />
-            <div style={signUpStyles.required}>{passwordError}</div>
+            <div className={styles.required}>{passwordError}</div>
             <input
               placeholder=" Re-Password"
-              style={signUpStyles.inp}
+              className={styles.inp}
               onChange={handleChangeConfirmPassword}
               type="password"
             />
-            <div style={signUpStyles.required}>{confirmPasswordError}</div>
-            <div style={signUpStyles.required}>
-              <p style={signUpStyles.required}>{required}</p>
+            <div className={styles.required}>{confirmPasswordError}</div>
+            <div className={styles.required}>
+              <p className={styles.required} style={{color:"red"}}>{required}</p>
             </div>
             {loading ? (
               <TailSpin color="black" radius={"10px"} />
             ) : (
-              <button style={signUpStyles.button} onClick={handleSignup}>
+              <button className={styles.button} onClick={handleSignup}>
                 Sign up
               </button>
             )}
-            <div style={signUpStyles.logInDiv}>
+            <div className={styles.logInDiv}>
               <p>Already have account?</p>{" "}
-              <p style={signUpStyles.logButton} onClick={login}>
+              <p className={styles.logButton} onClick={login}>
                 Log in
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div style={signUpStyles.win2}></div>
+      <div className={styles.win2}></div>
     </div>
   );
 }

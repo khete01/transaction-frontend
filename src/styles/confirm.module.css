@@ -1,0 +1,64 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  gap: 150px;
+  align-items: center;
+  flex-direction: column;
+}
+.iconBox {
+  display: flex;
+  width: 340px;
+  height: 160px;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 300px;
+}
+.select {
+  width: 380px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #f3f4f6;
+  padding: 10px;
+}
+.alt {
+  color: #475569;
+}
+.confirm {
+  width: 380px;
+  height: 50px;
+  background-color: #0166ff;
+  border-radius: 20px;
+  color: white;
+}
+.title {
+  display: flex;
+  justify-content: center;
+}
+.label {
+  display: flex;
+  gap: 20px;
+}
+.circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #0166ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.picDiv {
+  width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
