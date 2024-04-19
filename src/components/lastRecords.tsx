@@ -57,13 +57,13 @@ function Records({ transactions, setTransactions }: RecordsProps) {
           </div>
         </div>
         <p className={styles.note}>{transactions.note}</p>
-        <div className={styles.amountDiv}>
+        <div className={styles.amountDiv} style={{ display:"flex", justifyContent:"center", alignItems:"center" }}>
           {transactions.transactionType === "income" ? (
             <>
               <p className={styles.income} style={{ color: "#84cc16" }}>
                 +
               </p>
-              <p className={styles.amount} style={{ color: "#84cc16" }}>
+              <p className={styles.amount} style={{ color: "#84cc16"}}>
                 {transactions.amount}
               </p>
               <div className={styles.iconBox}>

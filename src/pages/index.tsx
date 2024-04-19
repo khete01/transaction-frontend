@@ -22,7 +22,7 @@ export default function Home() {
     const isUserLoggedIn = () => {
       const user = localStorage.getItem("user");
       if (!user) {
-        router.replace("/login");
+        router.push("/login");
       }
     };
     const fetchData = async () => {

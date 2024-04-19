@@ -48,7 +48,7 @@ function Login() {
           console.log(user);
           localStorage.setItem("user", user);
           setLoading(false);
-          router.replace("/currency");
+          router.replace("/");
         })
         .catch((err) => {
           console.log(err);
